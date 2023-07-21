@@ -68,13 +68,13 @@ function New-CustomConnectorConfig {
         }
 
         pac connector init --outputDirectory $OutputDirectory --generate-settings-file | Out-Null
-    
+
         # Copy the API definition to the output directory
         Copy-Item $config.apiDefinition "$OutputDirectory/apiDefinition.json"
-    
+
         # Configure the authentication model of the API using the API definition
         Configure-AuthenticationOptions -ConnectorAssetsPath $OutputDirectory -ConfigFile $ConfigFile
-    
+
         $iconFile = $config.icon
         if (Test-Path $iconFile) {
             # Copy the icon to the output directory and update the settings file
